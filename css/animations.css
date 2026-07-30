@@ -1,0 +1,31 @@
+/* ===========================
+   ANIMATIONS
+=========================== */
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseSoft {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+.reveal.visible {
+  animation: floatIn 0.8s ease forwards;
+}
+
+.product-card:hover .product-media img {
+  animation: pulseSoft 1.1s ease infinite;
+}

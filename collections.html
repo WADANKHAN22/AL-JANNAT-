@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Collections | ALJANNAT</title>
+    <meta name="description" content="Browse the ALJANNAT couture dress collection with elegant filters and quick shopping features." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+  </head>
+  <body data-page="collections">
+    <div class="loading-screen" aria-hidden="true">
+      <div class="loader"></div>
+    </div>
+
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="container nav-wrap">
+          <a href="index.html" class="brand" aria-label="ALJANNAT home">
+            <span class="brand-mark">
+              <span class="brand-a">A</span>
+              <span class="brand-j">J</span>
+            </span>
+            <span class="brand-name">ALJANNAT</span>
+          </a>
+
+          <nav class="main-nav" aria-label="Primary navigation">
+            <a href="collections.html?filter=new">New Arrivals</a>
+            <a href="collections.html?category=maxi">Maxi Dresses</a>
+            <a href="collections.html?category=midi">Midi Dresses</a>
+            <a href="collections.html?category=formal">Formal Dresses</a>
+            <a href="collections.html?category=party">Party Dresses</a>
+            <a href="collections.html?collection=bridal">Bridal Dresses</a>
+            <a href="collections.html?collection=sale">Sale</a>
+          </nav>
+
+          <div class="nav-actions">
+            <button class="icon-btn search-toggle" aria-label="Open search"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <a href="wishlist.html" class="icon-btn"><i class="fa-regular fa-heart"></i><span class="count-pill wishlist-count">0</span></a>
+            <a href="cart.html" class="icon-btn"><i class="fa-solid fa-bag-shopping"></i><span class="count-pill cart-count">0</span></a>
+            <button class="icon-btn theme-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+            <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+          </div>
+        </div>
+      </header>
+
+      <main class="page-section">
+        <div class="container">
+          <div class="page-hero reveal">
+            <p class="eyebrow">ALJANNAT Collections</p>
+            <h1>Luxury dresses curated for every celebration</h1>
+            <p>Browse refined silhouettes, standout partywear, and couture bridal looks in one carefully edited collection.</p>
+          </div>
+
+          <div class="collection-layout">
+            <aside class="filters-panel reveal" aria-label="Shop filters">
+              <div class="filter-block">
+                <h3>Category</h3>
+                <label><input type="checkbox" value="maxi" /> Maxi Dresses</label>
+                <label><input type="checkbox" value="midi" /> Midi Dresses</label>
+                <label><input type="checkbox" value="mini" /> Mini Dresses</label>
+                <label><input type="checkbox" value="party" /> Party Dresses</label>
+                <label><input type="checkbox" value="formal" /> Formal Dresses</label>
+              </div>
+              <div class="filter-block">
+                <h3>Collection</h3>
+                <label><input type="checkbox" value="bridal" /> Bridal</label>
+                <label><input type="checkbox" value="luxury" /> Luxury</label>
+                <label><input type="checkbox" value="sale" /> Sale</label>
+                <label><input type="checkbox" value="summer" /> Summer</label>
+              </div>
+              <div class="filter-block">
+                <h3>Price</h3>
+                <label><input type="radio" name="price" value="all" checked /> All</label>
+                <label><input type="radio" name="price" value="under-300" /> Under $300</label>
+                <label><input type="radio" name="price" value="300-700" /> $300-$700</label>
+                <label><input type="radio" name="price" value="700-plus" /> $700+</label>
+              </div>
+              <div class="filter-block">
+                <h3>Size</h3>
+                <label><input type="checkbox" value="xs" /> XS</label>
+                <label><input type="checkbox" value="s" /> S</label>
+                <label><input type="checkbox" value="m" /> M</label>
+                <label><input type="checkbox" value="l" /> L</label>
+              </div>
+            </aside>
+
+            <div class="products-area">
+              <div class="toolbar reveal">
+                <div>
+                  <p class="eyebrow">Showing</p>
+                  <h3 id="product-count">0 products</h3>
+                </div>
+                <div class="toolbar-actions">
+                  <select id="sort-select">
+                    <option value="featured">Featured</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="name">Name</option>
+                  </select>
+                  <button class="icon-btn" id="toggle-view" aria-label="Toggle view"><i class="fa-solid fa-grip"></i></button>
+                </div>
+              </div>
+              <div class="product-grid reveal" id="collection-products"></div>
+              <div class="pagination reveal">
+                <button class="btn btn-secondary">Previous</button>
+                <button class="btn btn-primary">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-grid">
+          <div>
+            <a href="index.html" class="brand footer-brand">
+              <span class="brand-mark">
+                <span class="brand-a">A</span>
+                <span class="brand-j">J</span>
+              </span>
+              <span class="brand-name">ALJANNAT</span>
+            </a>
+            <p>Luxury women's dresses for life's most beautiful moments.</p>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="contact.html">hello@aljannat.com</a></li>
+              <li><a href="contact.html">+966 55 123 4567</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Company</h4>
+            <ul>
+              <li><a href="about.html">About</a></li>
+              <li><a href="collections.html">Collections</a></li>
+              <li><a href="search.html">Search</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Customer Service</h4>
+            <ul>
+              <li><a href="cart.html">Shopping Cart</a></li>
+              <li><a href="wishlist.html">Wishlist</a></li>
+              <li><a href="contact.html">Support</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <div class="search-overlay" id="search-overlay" aria-hidden="true">
+      <div class="search-panel">
+        <button class="close-search" aria-label="Close search"><i class="fa-solid fa-xmark"></i></button>
+        <div class="search-heading">
+          <p class="eyebrow">Search dresses</p>
+          <h2>Find your perfect look</h2>
+        </div>
+        <div class="search-input-wrap">
+          <input type="text" id="global-search" placeholder="Search by style, collection, or name" />
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="search-results" id="search-results"></div>
+      </div>
+    </div>
+
+    <div class="modal-backdrop" id="product-modal" aria-hidden="true"></div>
+    <div class="toast" id="toast"></div>
+    <button class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script src="js/storage.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

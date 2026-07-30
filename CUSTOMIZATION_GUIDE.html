@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALJANNAT - Code Customization Guide</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f5f5f5;
+    }
+    @media print {
+      body {
+        background: white;
+      }
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background: white;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      border-bottom: 3px solid #c8a96a;
+      padding-bottom: 20px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #111;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      color: #c8a96a;
+      font-size: 1.2rem;
+      letter-spacing: 0.2em;
+    }
+    .toc {
+      background: #f8f8f8;
+      border-left: 4px solid #c8a96a;
+      padding: 20px;
+      margin: 30px 0;
+      border-radius: 4px;
+    }
+    .toc h2 {
+      color: #111;
+      margin-bottom: 15px;
+    }
+    .toc ul {
+      list-style: none;
+    }
+    .toc li {
+      margin: 8px 0;
+    }
+    .toc a {
+      color: #c8a96a;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .toc a:hover {
+      text-decoration: underline;
+    }
+    section {
+      margin: 40px 0;
+      page-break-inside: avoid;
+    }
+    h2 {
+      color: #111;
+      font-size: 1.8rem;
+      border-bottom: 2px solid #c8a96a;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    h3 {
+      color: #c8a96a;
+      font-size: 1.3rem;
+      margin-top: 20px;
+      margin-bottom: 12px;
+    }
+    .file-path {
+      background: #f0f0f0;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      color: #c8a96a;
+      font-weight: bold;
+      margin: 15px 0;
+      word-break: break-all;
+    }
+    .code-block {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 15px 0;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      border-left: 4px solid #c8a96a;
+    }
+    .keyword {
+      color: #569cd6;
+    }
+    .string {
+      color: #ce9178;
+    }
+    .function {
+      color: #dcdcaa;
+    }
+    .comment {
+      color: #6a9955;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background: #c8a96a;
+      color: white;
+      font-weight: bold;
+    }
+    tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+    .warning {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+    .info {
+      background: #d1ecf1;
+      border-left: 4px solid #17a2b8;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+    .success {
+      background: #d4edda;
+      border-left: 4px solid #28a745;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+    ul {
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    .page-break {
+      page-break-after: always;
+      margin: 40px 0;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
+      color: #666;
+      font-size: 0.9rem;
+    }
+    .highlight {
+      background: #fff3cd;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <header>
+      <h1>ALJANNAT</h1>
+      <p class="subtitle">Code Customization Guide</p>
+      <p style="color: #666; margin-top: 10px;">Complete guide on where to change images, details, footer, and add new features</p>
+    </header>
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="toc">
+      <h2>📋 Table of Contents</h2>
+      <ul>
+        <li><a href="#section1">1. Change Dress Images & Details</a></li>
+        <li><a href="#section2">2. Change Footer Information</a></li>
+        <li><a href="#section3">3. Update About Page</a></li>
+        <li><a href="#section4">4. Add Account Page</a></li>
+        <li><a href="#section5">5. Where to Upload Images</a></li>
+        <li><a href="#section6">6. File Structure Reference</a></li>
+      </ul>
+    </div>
+
+    <!-- SECTION 1 -->
+    <!-- THIS SECTION EXPLAINS WHERE TO CHANGE DRESS PICTURES, NAMES, PRICES, AND DETAILS -->
+    <section id="section1">
+      <h2>1️⃣ Change Dress Images & Details</h2>
+      
+      <!-- IMPORTANT: Edit this file to change any dress information on your site -->
+      <h3>Location: js/products.js</h3>
+      <div class="file-path">c:\Users\wadan khan\Desktop\aljannat\js\products.js</div>
+      
+      <!-- All your products are stored as a list in this file. Each dress has these properties you can change: -->
+      <p>This file contains all your dress product information. Every dress has:</p>
+      <!-- YOU CAN CHANGE ALL OF THESE PROPERTIES FOR EACH DRESS -->
+      <ul>
+        <li><strong>name</strong> - Dress name (e.g., "Aurora Silk Dress") <span class="highlight">← CHANGE THIS</span></li>
+        <li><strong>price</strong> - Original price <span class="highlight">← CHANGE THIS</span></li>
+        <li><strong>salePrice</strong> - Discounted price <span class="highlight">← CHANGE THIS</span></li>
+        <li><strong>image</strong> - Main product image URL <span class="highlight">← CHANGE THIS</span></li>
+        <li><strong>hoverImage</strong> - Image that shows on hover <span class="highlight">← CHANGE THIS</span></li>
+        <li><strong>description</strong> - Product description <span class="highlight">← CHANGE THIS</span></li>
+        <li><strong>colors</strong> - Available colors <span class="highlight">← CHANGE THIS</span></li>
+        <li><strong>sizes</strong> - Available sizes (XS, S, M, L, XL, XXL) <span class="highlight">← CHANGE THIS</span></li>
+        <li><strong>rating</strong> - Star rating (e.g., 4.9) <span class="highlight">← CHANGE THIS</span></li>
+        <li><strong>stock</strong> - Stock status (In Stock, Low Stock, Pre-Order) <span class="highlight">← CHANGE THIS</span></li>
+        <li><strong>badge</strong> - Label (New, Sale, Limited Edition, Bridal, Luxury) <span class="highlight">← CHANGE THIS</span></li>
+      </ul>
+
+      <h3>Example: Change Product #1</h3>
+      <div class="code-block">
+<span class="keyword">const</span> products = [
+  {
+    id: <span class="string">1</span>,
+    name: <span class="string">'Aurora Silk Dress'</span>,  <span class="comment">// ← CHANGE DRESS NAME</span>
+    category: <span class="string">'party'</span>,
+    collection: <span class="string">'luxury'</span>,
+    price: <span class="string">620</span>,  <span class="comment">// ← CHANGE PRICE</span>
+    salePrice: <span class="string">540</span>,  <span class="comment">// ← CHANGE SALE PRICE</span>
+    rating: <span class="string">4.9</span>,
+    colors: [<span class="string">'Gold'</span>, <span class="string">'Black'</span>],  <span class="comment">// ← CHANGE COLORS</span>
+    sizes: [<span class="string">'XS'</span>, <span class="string">'S'</span>, <span class="string">'M'</span>, <span class="string">'L'</span>],  <span class="comment">// ← CHANGE SIZES</span>
+    stock: <span class="string">'In Stock'</span>,  <span class="comment">// ← CHANGE STOCK STATUS</span>
+    image: <span class="string">'https://images.unsplash.com/...'</span>,  <span class="comment">// ← CHANGE MAIN IMAGE</span>
+    hoverImage: <span class="string">'https://images.unsplash.com/...'</span>,  <span class="comment">// ← CHANGE HOVER IMAGE</span>
+    badge: <span class="string">'Limited Edition'</span>,  <span class="comment">// ← CHANGE BADGE</span>
+    description: <span class="string">'A sculpted silk gown...'</span>  <span class="comment">// ← CHANGE DESCRIPTION</span>
+  }
+];
+      </div>
+
+      <h3>How to Update a Single Dress</h3>
+      <!-- SIMPLE STEPS TO CHANGE ONE DRESS -->
+      <ol>
+        <li>Open <span class="highlight">js/products.js</span> <!-- This file has all dress data --></li>
+        <li>Find the dress you want to change (look for <code>id: 1</code>, <code>id: 2</code>, etc.) <!-- Each dress has a unique ID --></li>
+        <li>Change the properties you want (name, price, image URL, description) <!-- Just replace the old text with new text --></li>
+        <li>Save the file <!-- Press Ctrl+S --></li>
+        <li>Refresh your browser to see the changes <!-- Press F5 or Ctrl+R --></li>
+      </ol>
+
+      <h3>How to Add a New Dress</h3>
+      <div class="code-block">
+<span class="keyword">const</span> products = [
+  <span class="comment">// ... existing dresses ...</span>
+  {
+    id: <span class="string">7</span>,  <span class="comment">// New unique ID (increment from last)</span>
+    name: <span class="string">'Your Dress Name'</span>,
+    category: <span class="string">'midi'</span>,
+    collection: <span class="string">'luxury'</span>,
+    price: <span class="string">500</span>,
+    salePrice: <span class="string">450</span>,
+    rating: <span class="string">5.0</span>,
+    colors: [<span class="string">'Red'</span>, <span class="string">'Blue'</span>],
+    sizes: [<span class="string">'S'</span>, <span class="string">'M'</span>, <span class="string">'L'</span>],
+    stock: <span class="string">'In Stock'</span>,
+    image: <span class="string">'assets/images/products/dress7.jpg'</span>,
+    hoverImage: <span class="string">'assets/images/products/dress7-hover.jpg'</span>,
+    badge: <span class="string">'New'</span>,
+    description: <span class="string">'Your dress description here'</span>
+  }
+];
+      </div>
+
+      <div class="info">
+        <strong>💡 Tip:</strong> When adding a new dress, make sure the <span class="highlight">id</span> is unique and higher than existing IDs. This prevents conflicts.
+      </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <!-- THE FOOTER APPEARS AT THE BOTTOM OF EVERY PAGE - YOU NEED TO UPDATE IT IN ALL FILES -->
+    <section id="section2" class="page-break">
+      <h2>2️⃣ Change Footer Information</h2>
+      
+      <!-- IMPORTANT: Footer shows on ALL pages, so update in all these files -->
+      <p>The footer appears at the bottom of every page. You need to update it in <strong>all HTML files</strong>:</p>
+
+      <table>
+        <tr>
+          <th>File</th>
+          <th>Location</th>
+        </tr>
+        <tr>
+          <td>index.html</td>
+          <td>Bottom of file</td>
+        </tr>
+        <tr>
+          <td>collections.html</td>
+          <td>Bottom of file</td>
+        </tr>
+        <tr>
+          <td>product.html</td>
+          <td>Bottom of file</td>
+        </tr>
+        <tr>
+          <td>wishlist.html</td>
+          <td>Bottom of file</td>
+        </tr>
+        <tr>
+          <td>cart.html</td>
+          <td>Bottom of file</td>
+        </tr>
+        <tr>
+          <td>search.html</td>
+          <td>Bottom of file</td>
+        </tr>
+        <tr>
+          <td>about.html</td>
+          <td>Bottom of file</td>
+        </tr>
+        <tr>
+          <td>contact.html</td>
+          <td>Bottom of file</td>
+        </tr>
+      </table>
+
+      <h3>Current Footer Code (to find and replace)</h3>
+      <div class="code-block">
+&lt;footer class="site-footer"&gt;
+  &lt;div class="container footer-grid"&gt;
+    &lt;div&gt;
+      &lt;a href="index.html" class="brand footer-brand"&gt;
+        &lt;span class="brand-mark"&gt;
+          &lt;span class="brand-a"&gt;A&lt;/span&gt;
+          &lt;span class="brand-j"&gt;J&lt;/span&gt;
+        &lt;/span&gt;
+        &lt;span class="brand-name"&gt;ALJANNAT&lt;/span&gt;
+      &lt;/a&gt;
+      &lt;p&gt;Luxury women's dresses for life's most beautiful moments.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;h4&gt;Contact&lt;/h4&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="contact.html"&gt;hello@aljannat.com&lt;/a&gt;&lt;/li&gt;  <span class="comment">&lt;!-- ← CHANGE EMAIL --&gt;</span>
+        &lt;li&gt;&lt;a href="contact.html"&gt;+966 55 123 4567&lt;/a&gt;&lt;/li&gt;  <span class="comment">&lt;!-- ← CHANGE PHONE --&gt;</span>
+        &lt;li&gt;&lt;a href="contact.html"&gt;Riyadh, Saudi Arabia&lt;/a&gt;&lt;/li&gt;  <span class="comment">&lt;!-- ← CHANGE LOCATION --&gt;</span>
+      &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;h4&gt;Company&lt;/h4&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="about.html"&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="collections.html"&gt;Collections&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="search.html"&gt;Search&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;h4&gt;Customer Service&lt;/h4&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="cart.html"&gt;Shopping Cart&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="wishlist.html"&gt;Wishlist&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="contact.html"&gt;Support&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;
+      </div>
+
+      <h3>Step-by-Step: Update Footer</h3>
+      <!-- FOLLOW THESE STEPS TO UPDATE FOOTER INFO ON ALL PAGES -->
+      <ol>
+        <li>Open each HTML file (index.html, collections.html, etc.) <!-- Start with one file, then repeat for others --></li>
+        <li>Find the <code>&lt;footer&gt;</code> section at the bottom <!-- Use Ctrl+F to search for "footer" --></li>
+        <li>Replace the email: <code>hello@aljannat.com</code> → your email <!-- Change this to YOUR email address --></li>
+        <li>Replace the phone: <code>+966 55 123 4567</code> → your phone <!-- Change this to YOUR phone number --></li>
+        <li>Replace the location: <code>Riyadh, Saudi Arabia</code> → your city <!-- Change this to YOUR city/location --></li>
+        <li>Update company description if needed <!-- Optional: change the tagline --></li>
+        <li>Save and refresh browser <!-- Press Ctrl+S to save, then F5 to refresh --></li>
+      </ol>
+
+      <div class="warning">
+        <strong>⚠️ Important:</strong> Update the footer in ALL 8 HTML files, not just index.html. Otherwise, old info will show on other pages.
+      </div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <!-- THIS FILE HAS YOUR BRAND STORY - CHANGE THE TEXT TO MATCH YOUR BUSINESS -->
+    <section id="section3">
+      <h2>3️⃣ Update About Page</h2>
+      
+      <!-- Edit this file to tell your brand story -->
+      <div class="file-path">c:\Users\wadan khan\Desktop\aljannat\about.html</div>
+
+      <h3>Current About Page Code</h3>
+      <!-- HERE IS THE EXACT CODE YOU NEED TO FIND AND CHANGE IN about.html -->
+      <div class="code-block">
+&lt;div class="about-grid"&gt;
+  &lt;div class="reveal"&gt;
+    &lt;p class="eyebrow"&gt;About ALJANNAT&lt;/p&gt;
+    &lt;h1&gt;Where couture elegance meets modern dressing&lt;/h1&gt;  <span class="comment">&lt;!-- ← CHANGE TITLE --&gt;</span>
+    &lt;p&gt;ALJANNAT is a luxury women's dress boutique focused on sculptural silhouettes, premium fabrics, and timeless occasion dressing.&lt;/p&gt;  <span class="comment">&lt;!-- ← CHANGE DESCRIPTION --&gt;</span>
+  &lt;/div&gt;
+  &lt;div class="about-card reveal"&gt;
+    &lt;h3&gt;Our philosophy&lt;/h3&gt;
+    &lt;p&gt;We believe the perfect dress should feel effortless, refined, and unforgettable.&lt;/p&gt;  <span class="comment">&lt;!-- ← CHANGE PHILOSOPHY --&gt;</span>
+  &lt;/div&gt;
+&lt;/div&gt;
+      </div>
+
+      <h3>How to Update</h3>
+      <ol>
+        <li>Open <span class="highlight">about.html</span></li>
+        <li>Find the text inside <code>&lt;h1&gt;</code> - change to your brand story</li>
+        <li>Find the first <code>&lt;p&gt;</code> - change to your company description</li>
+        <li>Find <code>Our philosophy</code> section - update your values</li>
+        <li>Save and refresh</li>
+      </ol>
+
+      <div class="info">
+        <strong>💡 Tip:</strong> Keep your brand story between 50-100 words. Short and impactful is better!
+      </div>
+    </section>
+
+    <!-- SECTION 4 -->
+    <!-- THIS SECTION EXPLAINS HOW TO CREATE A NEW ACCOUNT PAGE -->
+    <section id="section4" class="page-break">
+      <h2>4️⃣ Add Account Page</h2>
+      
+      <!-- YOU NEED TO CREATE THIS NEW FILE - It doesn't exist yet -->
+      <p>Create a new file called <span class="highlight">account.html</span> in your root folder.</p>
+      <!-- This is where to save the new file -->
+      <div class="file-path">c:\Users\wadan khan\Desktop\aljannat\account.html</div>
+
+      <!-- COPY ALL THE CODE BELOW AND PASTE IT INTO YOUR NEW account.html FILE -->
+      <h3>Complete Account Page Template</h3>
+      <div class="code-block">
+<span class="comment">&lt;!-- account.html - NEW FILE --&gt;</span>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;title&gt;Account | ALJANNAT&lt;/title&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@500;600;700;800&amp;display=swap" rel="stylesheet" /&gt;
+    &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" /&gt;
+    &lt;link rel="stylesheet" href="css/style.css" /&gt;
+    &lt;link rel="stylesheet" href="css/responsive.css" /&gt;
+    &lt;link rel="stylesheet" href="css/animations.css" /&gt;
+  &lt;/head&gt;
+  &lt;body data-page="account"&gt;
+    &lt;div class="site-shell"&gt;
+      &lt;header class="site-header"&gt;
+        &lt;div class="container nav-wrap"&gt;
+          &lt;a href="index.html" class="brand" aria-label="ALJANNAT home"&gt;
+            &lt;span class="brand-mark"&gt;
+              &lt;span class="brand-a"&gt;A&lt;/span&gt;
+              &lt;span class="brand-j"&gt;J&lt;/span&gt;
+            &lt;/span&gt;
+            &lt;span class="brand-name"&gt;ALJANNAT&lt;/span&gt;
+          &lt;/a&gt;
+          &lt;div class="nav-actions"&gt;
+            &lt;button class="icon-btn search-toggle" aria-label="Open search"&gt;&lt;i class="fa-solid fa-magnifying-glass"&gt;&lt;/i&gt;&lt;/button&gt;
+            &lt;a href="wishlist.html" class="icon-btn"&gt;&lt;i class="fa-regular fa-heart"&gt;&lt;/i&gt;&lt;span class="count-pill wishlist-count"&gt;0&lt;/span&gt;&lt;/a&gt;
+            &lt;a href="cart.html" class="icon-btn"&gt;&lt;i class="fa-solid fa-bag-shopping"&gt;&lt;/i&gt;&lt;span class="count-pill cart-count"&gt;0&lt;/span&gt;&lt;/a&gt;
+            &lt;button class="icon-btn theme-toggle" aria-label="Toggle dark mode"&gt;&lt;i class="fa-solid fa-moon"&gt;&lt;/i&gt;&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/header&gt;
+
+      &lt;main class="page-section"&gt;
+        &lt;div class="container"&gt;
+          &lt;div class="page-hero reveal"&gt;
+            &lt;p class="eyebrow"&gt;My Account&lt;/p&gt;
+            &lt;h1&gt;Welcome to your ALJANNAT profile&lt;/h1&gt;
+          &lt;/div&gt;
+
+          &lt;div class="account-grid reveal"&gt;
+            &lt;div class="account-card"&gt;
+              &lt;h3&gt;&lt;i class="fa-solid fa-user"&gt;&lt;/i&gt; Profile&lt;/h3&gt;
+              &lt;p&gt;View and manage your personal information.&lt;/p&gt;
+              &lt;button class="btn btn-secondary"&gt;Edit Profile&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class="account-card"&gt;
+              &lt;h3&gt;&lt;i class="fa-solid fa-heart"&gt;&lt;/i&gt; Wishlist&lt;/h3&gt;
+              &lt;p&gt;Access your saved dresses and favorites.&lt;/p&gt;
+              &lt;a href="wishlist.html" class="btn btn-secondary"&gt;View Wishlist&lt;/a&gt;
+            &lt;/div&gt;
+            &lt;div class="account-card"&gt;
+              &lt;h3&gt;&lt;i class="fa-solid fa-bag-shopping"&gt;&lt;/i&gt; Orders&lt;/h3&gt;
+              &lt;p&gt;Track your past and pending orders.&lt;/p&gt;
+              &lt;button class="btn btn-secondary"&gt;Order History&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class="account-card"&gt;
+              &lt;h3&gt;&lt;i class="fa-solid fa-location-dot"&gt;&lt;/i&gt; Addresses&lt;/h3&gt;
+              &lt;p&gt;Manage your shipping and billing addresses.&lt;/p&gt;
+              &lt;button class="btn btn-secondary"&gt;Manage Addresses&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/main&gt;
+
+      &lt;footer class="site-footer"&gt;
+        &lt;div class="container footer-grid"&gt;
+          &lt;div&gt;
+            &lt;a href="index.html" class="brand footer-brand"&gt;
+              &lt;span class="brand-mark"&gt;
+                &lt;span class="brand-a"&gt;A&lt;/span&gt;
+                &lt;span class="brand-j"&gt;J&lt;/span&gt;
+              &lt;/span&gt;
+              &lt;span class="brand-name"&gt;ALJANNAT&lt;/span&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;
+
+    &lt;div class="search-overlay" id="search-overlay" aria-hidden="true"&gt;
+      &lt;div class="search-panel"&gt;
+        &lt;button class="close-search" aria-label="Close search"&gt;&lt;i class="fa-solid fa-xmark"&gt;&lt;/i&gt;&lt;/button&gt;
+        &lt;div class="search-heading"&gt;
+          &lt;p class="eyebrow"&gt;Search dresses&lt;/p&gt;
+          &lt;h2&gt;Find your perfect look&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class="search-input-wrap"&gt;
+          &lt;input type="text" id="global-search" placeholder="Search by style, collection, or name" /&gt;
+          &lt;i class="fa-solid fa-magnifying-glass"&gt;&lt;/i&gt;
+        &lt;/div&gt;
+        &lt;div class="search-results" id="search-results"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="toast" id="toast"&gt;&lt;/div&gt;
+    &lt;button class="back-to-top" aria-label="Back to top"&gt;&lt;i class="fa-solid fa-arrow-up"&gt;&lt;/i&gt;&lt;/button&gt;
+
+    &lt;script src="js/storage.js"&gt;&lt;/script&gt;
+    &lt;script src="js/products.js"&gt;&lt;/script&gt;
+    &lt;script src="js/wishlist.js"&gt;&lt;/script&gt;
+    &lt;script src="js/cart.js"&gt;&lt;/script&gt;
+    &lt;script src="js/search.js"&gt;&lt;/script&gt;
+    &lt;script src="js/app.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+      </div>
+
+      <h3>Add Account Page Styles to CSS</h3>
+      <p>Add this code to the end of <span class="highlight">css/style.css</span>:</p>
+      <div class="code-block">
+<span class="comment">/* Account Page */</span>
+.account-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.account-card {
+  background: var(--secondary);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.account-card h3 {
+  color: var(--primary);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.account-card p {
+  margin-bottom: 1.2rem;
+  color: var(--text);
+}
+
+@media (max-width: 760px) {
+  .account-grid {
+    grid-template-columns: 1fr;
+  }
+}
+      </div>
+
+      <h3>How to Create Account Page</h3>
+      <!-- FOLLOW THESE EXACT STEPS TO ADD THE ACCOUNT PAGE -->
+      <ol>
+        <li>Create a new file named <span class="highlight">account.html</span> in root folder <!-- Right-click in folder → New File → Name it account.html --></li>
+        <li>Copy the HTML code above into the file <!-- Select all code above, Ctrl+C, then Ctrl+V in new file --></li>
+        <li>Save the file <!-- Press Ctrl+S --></li>
+        <li>Add the CSS code to <span class="highlight">css/style.css</span> <!-- Go to style.css, add code at the end --></li>
+        <li>Save and refresh your browser <!-- Press Ctrl+S then F5 --></li>
+        <li>Access at <code>http://localhost:8000/account.html</code> <!-- Your new account page is live! --></li>
+      </ol>
+
+      <div class="success">
+        <strong>✅ Done!</strong> Your account page will now be live and styled like the rest of the site.
+      </div>
+    </section>
+
+    <!-- SECTION 5 -->
+    <!-- THIS EXPLAINS WHERE TO PUT YOUR DRESS IMAGES - 3 OPTIONS AVAILABLE -->
+    <section id="section5" class="page-break">
+      <h2>5️⃣ Where to Upload Images</h2>
+      
+      <!-- YOU HAVE 3 WAYS TO STORE IMAGES - CHOOSE ONE METHOD -->
+      <p>Since this is a frontend-only site with no backend, you have 3 options for storing dress images:</p>
+
+      <!-- OPTION 1: EASIEST - USE FREE IMAGE SITES -->
+      <h3>Option A: Use External URLs (Easiest) ⭐ RECOMMENDED</h3>
+      <p><strong>Best for:</strong> Quick setup, no file management</p>
+      <ul>
+        <li><strong>Unsplash</strong> - Free high-quality images - https://unsplash.com</li>
+        <li><strong>Pexels</strong> - Free stock photos - https://pexels.com</li>
+        <li><strong>Pixabay</strong> - Free images - https://pixabay.com</li>
+        <li><strong>Shopify</strong> - Your hosted images</li>
+      </ul>
+      <p><strong>How to use:</strong> Copy the image URL and paste it into <span class="highlight">js/products.js</span></p>
+      <div class="code-block">
+image: <span class="string">'https://images.unsplash.com/photo-1234567890?auto=format&fit=crop&w=900&q=80'</span>,
+      </div>
+
+      <h3>Option B: Store Images Locally</h3>
+      <!-- OPTION 2: SAVE YOUR OWN DRESS PICTURES IN A FOLDER ON YOUR COMPUTER -->
+      <p><strong>Best for:</strong> Full control, permanent storage</p>
+      <ol>
+        <li>Save your dress images to: <span class="highlight">assets/images/products/</span> <!-- Create this folder if it doesn't exist --></li>
+        <li>Name them clearly: <code>dress-name-1.jpg</code>, <code>dress-name-2.jpg</code> <!-- Use clear names like: aurora-dress.jpg --></li>
+        <li>Update <span class="highlight">js/products.js</span>: <!-- Then tell the code where to find the images -->
+          <div class="code-block">
+image: <span class="string">'assets/images/products/aurora-dress.jpg'</span>,  <!-- ← POINT TO YOUR IMAGE FILE -->
+hoverImage: <span class="string">'assets/images/products/aurora-dress-hover.jpg'</span>,  <!-- ← POINT TO HOVER IMAGE -->
+          </div>
+        </li>
+        <li>Save and refresh browser</li>
+      </ol>
+
+      <h3>Folder Structure for Local Images</h3>
+      <div class="code-block">
+aljannat/
+├── assets/
+│   └── images/
+│       └── products/
+│           ├── dress1.jpg              <span class="comment">← Your dress images go here</span>
+│           ├── dress1-hover.jpg
+│           ├── dress2.jpg
+│           ├── dress2-hover.jpg
+│           └── ... more dresses ...
+      </div>
+
+      <h3>Option C: Use a Cloud Service (Advanced)</h3>
+      <p><strong>Best for:</strong> Large-scale production, flexible storage</p>
+      <ul>
+        <li><strong>AWS S3</strong> - Amazon storage</li>
+        <li><strong>Cloudinary</strong> - Image hosting & optimization</li>
+        <li><strong>Firebase Storage</strong> - Google cloud storage</li>
+        <li><strong>Imgbb</strong> - Free image hosting - https://imgbb.com</li>
+      </ul>
+      <p>Upload images to cloud service, get URL, paste in <span class="highlight">js/products.js</span></p>
+
+      <table>
+        <tr>
+          <th>Option</th>
+          <th>Cost</th>
+          <th>Speed</th>
+          <th>Difficulty</th>
+        </tr>
+        <tr>
+          <td>External URLs</td>
+          <td>Free</td>
+          <td>Fast</td>
+          <td>Easy</td>
+        </tr>
+        <tr>
+          <td>Local Files</td>
+          <td>Free</td>
+          <td>Fast</td>
+          <td>Easy</td>
+        </tr>
+        <tr>
+          <td>Cloud Service</td>
+          <td>Free/Paid</td>
+          <td>Very Fast</td>
+          <td>Medium</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- SECTION 6 -->
+    <section id="section6">
+      <h2>6️⃣ File Structure Reference</h2>
+      
+      <p>Here's where to find and edit every important file:</p>
+
+      <div class="code-block">
+aljannat/
+│
+├── <strong>index.html</strong>                    <span class="comment">← Home page (footer here)</span>
+├── collections.html                <span class="comment">← Shop page (footer here)</span>
+├── product.html                    <span class="comment">← Product detail (footer here)</span>
+├── wishlist.html                   <span class="comment">← Wishlist (footer here)</span>
+├── cart.html                       <span class="comment">← Shopping cart (footer here)</span>
+├── search.html                     <span class="comment">← Search (footer here)</span>
+├── about.html                      <span class="comment">← About page - UPDATE HERE</span>
+├── contact.html                    <span class="comment">← Contact (footer here)</span>
+├── account.html                    <span class="comment">← Account page - CREATE THIS</span>
+│
+├── css/
+│   ├── <strong>style.css</strong>              <span class="comment">← Main styles + account CSS</span>
+│   ├── responsive.css              <span class="comment">← Mobile responsive</span>
+│   └── animations.css              <span class="comment">← Animations</span>
+│
+├── js/
+│   ├── <strong>products.js</strong>            <span class="comment">← EDIT DRESS DATA HERE ⭐</span>
+│   ├── app.js                      <span class="comment">← Main JavaScript</span>
+│   ├── storage.js                  <span class="comment">← Local storage</span>
+│   ├── wishlist.js                 <span class="comment">← Wishlist functionality</span>
+│   ├── cart.js                     <span class="comment">← Shopping cart</span>
+│   ├── search.js                   <span class="comment">← Search functionality</span>
+│   └── filters.js                  <span class="comment">← Collection filters</span>
+│
+└── assets/
+    ├── images/
+    │   ├── hero/                   <span class="comment">← Hero section images</span>
+    │   ├── banners/                <span class="comment">← Promotional banners</span>
+    │   ├── products/               <span class="comment">← ⭐ UPLOAD DRESS IMAGES HERE</span>
+    │   ├── categories/             <span class="comment">← Category images</span>
+    │   └── logo/                   <span class="comment">← Logo images</span>
+    ├── videos/                     <span class="comment">← Video files</span>
+    ├── icons/                      <span class="comment">← Icon files</span>
+    └── fonts/                      <span class="comment">← Custom fonts</span>
+      </div>
+
+      <h3>Quick Reference: What to Edit</h3>
+      <table>
+        <tr>
+          <th>What You Want to Change</th>
+          <th>File to Edit</th>
+          <th>How</th>
+        </tr>
+        <tr>
+          <td>Dress name, price, image</td>
+          <td>js/products.js</td>
+          <td>Edit product object</td>
+        </tr>
+        <tr>
+          <td>Add new dress</td>
+          <td>js/products.js</td>
+          <td>Add new product object</td>
+        </tr>
+        <tr>
+          <td>Footer email, phone, address</td>
+          <td>All HTML files</td>
+          <td>Find &lt;footer&gt; section</td>
+        </tr>
+        <tr>
+          <td>About page content</td>
+          <td>about.html</td>
+          <td>Edit text in h1 and p tags</td>
+        </tr>
+        <tr>
+          <td>Add account page</td>
+          <td>account.html (new)</td>
+          <td>Create new file</td>
+        </tr>
+        <tr>
+          <td>Upload dress images</td>
+          <td>assets/images/products/</td>
+          <td>Save image files here</td>
+        </tr>
+        <tr>
+          <td>Change colors/theme</td>
+          <td>css/style.css</td>
+          <td>Edit CSS variables at top</td>
+        </tr>
+        <tr>
+          <td>Add new page</td>
+          <td>Create .html file</td>
+          <td>Copy template from existing page</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- FINAL SECTION -->
+    <!-- COMPLETE CHECKLIST TO MAKE SURE YOU CHANGED EVERYTHING -->
+    <section class="page-break">
+      <h2>✅ Complete Checklist</h2>
+      
+      <!-- USE THIS CHECKLIST TO TRACK YOUR PROGRESS -->
+      <p>Use this checklist to ensure all customizations are complete:</p>
+
+      <div style="background: #f8f8f8; padding: 20px; border-radius: 6px;">
+        <!-- PHASE 1: CHANGE YOUR PRODUCT INFORMATION -->
+        <h3>Phase 1: Update Dress Data</h3>
+        <ul>
+          <li>☐ Edit existing dresses in <span class="highlight">js/products.js</span> <!-- Change dress names, prices, images --></li>
+          <li>☐ Add new dresses in <span class="highlight">js/products.js</span> <!-- Add more products if you want --></li>
+          <li>☐ Update dress images (use URLs or upload locally) <!-- Either use external URLs or save locally --></li>
+          <li>☐ Update dress descriptions and prices <!-- Make descriptions match your actual dresses --></li>
+        </ul>
+
+        <!-- PHASE 2: UPDATE YOUR CONTACT INFO -->
+        <h3>Phase 2: Update Brand Info</h3>
+        <ul>
+          <li>☐ Update footer in ALL 8 HTML files (email, phone, address) <!-- IMPORTANT: Do all 8 files! --></li>
+          <li>☐ Update about.html with brand story <!-- Tell visitors about your brand --></li>
+          <li>☐ Update contact.html with your contact info <!-- Add your real contact information --></li>
+        </ul>
+
+        <!-- PHASE 3: CREATE ACCOUNT PAGE -->
+        <h3>Phase 3: Add Account Page</h3>
+        <ul>
+          <li>☐ Create new <span class="highlight">account.html</span> file <!-- New file in root folder --></li>
+          <li>☐ Add CSS to <span class="highlight">css/style.css</span> <!-- Add styling code --></li>
+          <li>☐ Test account page links <!-- Click around to make sure it works --></li>
+        </ul>
+
+        <!-- PHASE 4: FINAL TESTING -->
+        <h3>Phase 4: Test & Launch</h3>
+        <ul>
+          <li>☐ Test all pages in browser <!-- Visit each page --></li>
+          <li>☐ Test responsive design on mobile <!-- Check on phone/tablet --></li>
+          <li>☐ Test wishlist and cart functionality <!-- Try adding/removing items --></li>
+          <li>☐ Test search and filters <!-- Try searching for dresses --></li>
+          <li>☐ Test dark mode <!-- Click moon icon --></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <p>ALJANNAT Frontend Customization Guide | Generated on 2026-07-26</p>
+      <p>📖 Print to PDF for future reference: Use your browser's Print function (Ctrl+P)</p>
+    </div>
+
+  </div>
+
+  <script>
+    // Print optimization
+    if (window.location.hash === '#print') {
+      window.print();
+    }
+  </script>
+</body>
+</html>
