@@ -1,37 +1,45 @@
-// ============================
-// SHOPPING CART FUNCTIONALITY
-// ============================
+// ==========================================
+// PURE FRONTEND SHOPPING CART LOGIC
+// ==========================================
 
 function getCartItems() {
-  return getStoredArray(STORAGE_KEYS.cart);
+  return getCartItemsFromStorage();
 }
 
 function addToCart(id) {
-  const next = toggleStoredItem(STORAGE_KEYS.cart, String(id));
+  addCartItem(id);
   updateCartCount();
   renderCart();
-  showToast('Added to cart');
+  if (typeof showToast === 'function') showToast('Piece added to your bag');
 }
 
 function updateCartCount() {
   const counts = document.querySelectorAll('.cart-count');
+  const cartItems = getCartItems();
   counts.forEach((element) => {
-    element.textContent = getCartItems().length;
+    element.textContent = cartItems.length;
   });
 }
 
 function renderCart() {
-  const cartItems = document.getElementById('cart-items');
+  const cartItemsNode = document.getElementById('cart-items');
   const subtotal = document.getElementById('subtotal');
   const total = document.getElementById('total');
-  if (!cartItems) return;
+  if (!cartItemsNode) return;
 
-  const cartIds = getCartItems();
-  const selectedProducts = products.filter((product) => cartIds.includes(String(product.id)));
+  const productIds = getCartItems();
+  const selectedProducts = products.filter((product) => productIds.includes(String(product.id)));
 
-  cartItems.innerHTML = '';
+  cartItemsNode.innerHTML = '';
   if (!selectedProducts.length) {
-    cartItems.innerHTML = '<p class="empty-state">Your cart is empty. Start by adding a few favorites.</p>';
+    cartItemsNode.innerHTML = `
+      <div class="empty-state">
+        <i class="fa-solid fa-bag-shopping" style="font-size: 3rem; color: var(--accent); margin-bottom: 1rem;"></i>
+        <h2>Your shopping bag is empty</h2>
+        <p style="margin: 0.5rem 0 1.5rem;">Explore our couture collections to add luxury dresses to your bag.</p>
+        <a href="collections.html" class="btn btn-primary">Discover Collection</a>
+      </div>
+    `;
     if (subtotal) subtotal.textContent = '$0';
     if (total) total.textContent = '$0';
     return;
@@ -39,21 +47,25 @@ function renderCart() {
 
   let amount = 0;
   selectedProducts.forEach((product) => {
-    amount += product.salePrice || product.price;
+    const itemPrice = product.salePrice || product.price;
+    amount += itemPrice;
     const item = document.createElement('div');
     item.className = 'cart-item';
     item.innerHTML = `
       <div class="cart-item-info">
         <img src="${product.image}" alt="${product.name}" />
         <div>
-          <h3>${product.name}</h3>
-          <p>${product.collection}</p>
-          <p>${formatPrice(product.salePrice || product.price)}</p>
+          <span class="eyebrow">${product.badge}</span>
+          <h3 style="font-size: 1.1rem; margin-bottom: 0.25rem;">${product.name}</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">${product.collection} · Size: M</p>
+          <p class="current-price" style="margin-top: 0.5rem;">${formatPrice(itemPrice)}</p>
         </div>
       </div>
-      <button class="btn btn-secondary">Remove</button>
+      <button class="btn btn-secondary remove-cart-item" data-id="${product.id}">
+        <i class="fa-solid fa-trash-can"></i> Remove
+      </button>
     `;
-    cartItems.appendChild(item);
+    cartItemsNode.appendChild(item);
   });
 
   if (subtotal) subtotal.textContent = formatPrice(amount);
@@ -65,17 +77,29 @@ function renderCart() {
   }
 }
 
+function removeCartItemHandler(id) {
+  removeCartItem(id);
+  updateCartCount();
+  renderCart();
+  if (typeof showToast === 'function') showToast('Piece removed from bag');
+}
+
 document.addEventListener('click', (event) => {
   const inline = event.target.closest('.add-to-cart-inline');
   if (inline) {
-    const card = inline.closest('.product-card');
-    const id = card.querySelector('.wishlist-toggle').getAttribute('data-id');
-    addToCart(id);
+    const id = inline.getAttribute('data-id');
+    if (id) addToCart(id);
   }
 
   const cartButton = event.target.closest('.add-to-cart-btn');
   if (cartButton) {
     const id = new URLSearchParams(window.location.search).get('id') || 1;
     addToCart(id);
+  }
+
+  const removeButton = event.target.closest('.remove-cart-item');
+  if (removeButton) {
+    const id = removeButton.dataset.id;
+    removeCartItemHandler(id);
   }
 });

@@ -3,52 +3,90 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact | ALJANNAT</title>
-    <meta name="description" content="Contact ALJANNAT for styling support and boutique inquiries." />
+    <title>Contact Us | ALJANNAT Luxury Fashion</title>
+    <meta name="description" content="Contact ALJANNAT for bridal styling support, concierge assistance, and boutique inquiries." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
     <link rel="stylesheet" href="css/animations.css" />
+    <link rel="icon" href="logo.png" type="image/png" />
   </head>
   <body data-page="contact">
     <div class="loading-screen" aria-hidden="true">
       <div class="loader"></div>
+      <p style="font-family: var(--font-serif); letter-spacing: 0.3em; font-size: 0.9rem; color: var(--accent);">ALJANNAT LUXURY</p>
     </div>
 
     <div class="site-shell">
       <header class="site-header">
         <div class="container nav-wrap">
           <a href="index.html" class="brand" aria-label="ALJANNAT home">
-            <span class="brand-mark">
-              <span class="brand-a">A</span>
-              <span class="brand-j">J</span>
-            </span>
+            <img src="logo.png" alt="ALJANNAT" class="brand-logo" />
             <span class="brand-name">ALJANNAT</span>
           </a>
+
+          <nav class="main-nav" aria-label="Primary navigation">
+            <a href="collections.html?filter=new">New Arrivals</a>
+            <a href="collections.html?category=maxi">Maxi Dresses</a>
+            <a href="collections.html?category=formal">Formal Dresses</a>
+            <a href="collections.html?category=party">Party Dresses</a>
+            <a href="collections.html?collection=bridal">Bridal Edit</a>
+            <a href="wholesale.html">Wholesale B2B</a>
+            <a href="orders.html">My Orders</a>
+          </nav>
+
           <div class="nav-actions">
             <button class="icon-btn search-toggle" aria-label="Open search"><i class="fa-solid fa-magnifying-glass"></i></button>
             <a href="wishlist.html" class="icon-btn"><i class="fa-regular fa-heart"></i><span class="count-pill wishlist-count">0</span></a>
             <a href="cart.html" class="icon-btn"><i class="fa-solid fa-bag-shopping"></i><span class="count-pill cart-count">0</span></a>
             <button class="icon-btn theme-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+            <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
           </div>
         </div>
       </header>
 
       <main class="page-section">
-        <div class="container contact-grid">
-          <div class="reveal">
-            <p class="eyebrow">Contact</p>
-            <h1>We are here for your styling support</h1>
-            <p>Whether you need bridal guidance, occasion dressing tips, or a personal fitting recommendation, our team is ready to assist.</p>
+        <div class="container">
+          <div class="page-hero reveal">
+            <p class="eyebrow">CLIENT CONCIERGE</p>
+            <h1>We are Here for Your Styling Support</h1>
+            <p>Whether you need bridal styling guidance, occasion dressing tips, or boutique fitting appointments, our team is at your service.</p>
           </div>
-          <div class="contact-card reveal">
-            <h3>Visit the boutique</h3>
-            <p><i class="fa-solid fa-location-dot"></i> Riyadh, Saudi Arabia</p>
-            <p><i class="fa-solid fa-phone"></i> +966 55 123 4567</p>
-            <p><i class="fa-solid fa-envelope"></i> hello@aljannat.com</p>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem;" class="reveal">
+            <div class="cart-summary" style="padding: 2.5rem;">
+              <h2>Send an Inquiry</h2>
+              <form style="display: flex; flex-direction: column; gap: 1.2rem;" onsubmit="event.preventDefault(); showToast('Thank you! Your message has been sent to our concierge.'); this.reset();">
+                <input type="text" placeholder="Your Full Name" style="padding: 0.85rem 1rem; border: 1px solid var(--border); border-radius: var(--radius-sm);" required />
+                <input type="email" placeholder="Your Email Address" style="padding: 0.85rem 1rem; border: 1px solid var(--border); border-radius: var(--radius-sm);" required />
+                <input type="text" placeholder="Subject / Occasion Date" style="padding: 0.85rem 1rem; border: 1px solid var(--border); border-radius: var(--radius-sm);" required />
+                <textarea rows="4" placeholder="How may our concierge assist you?" style="padding: 0.85rem 1rem; border: 1px solid var(--border); border-radius: var(--radius-sm);" required></textarea>
+                <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+              </form>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 2rem;">
+              <div style="background: var(--surface); border: 1px solid var(--border); padding: 2rem; border-radius: var(--radius); shadow: var(--shadow-sm);">
+                <i class="fa-solid fa-location-dot" style="font-size: 1.8rem; color: var(--accent); margin-bottom: 0.75rem;"></i>
+                <h3>Boutique Location</h3>
+                <p style="color: var(--text-muted); margin-top: 0.35rem;">Riyadh Luxury Fashion District, Kingdom of Saudi Arabia</p>
+              </div>
+
+              <div style="background: var(--surface); border: 1px solid var(--border); padding: 2rem; border-radius: var(--radius); shadow: var(--shadow-sm);">
+                <i class="fa-solid fa-envelope" style="font-size: 1.8rem; color: var(--accent); margin-bottom: 0.75rem;"></i>
+                <h3>Email Concierge</h3>
+                <p style="color: var(--text-muted); margin-top: 0.35rem;">concierge@aljannat.com</p>
+              </div>
+
+              <div style="background: var(--surface); border: 1px solid var(--border); padding: 2rem; border-radius: var(--radius); shadow: var(--shadow-sm);">
+                <i class="fa-solid fa-phone" style="font-size: 1.8rem; color: var(--accent); margin-bottom: 0.75rem;"></i>
+                <h3>Private WhatsApp & Phone</h3>
+                <p style="color: var(--text-muted); margin-top: 0.35rem;">+966 55 123 4567</p>
+              </div>
+            </div>
           </div>
         </div>
       </main>
@@ -57,12 +95,18 @@
         <div class="container footer-grid">
           <div>
             <a href="index.html" class="brand footer-brand">
-              <span class="brand-mark">
-                <span class="brand-a">A</span>
-                <span class="brand-j">J</span>
-              </span>
-              <span class="brand-name">ALJANNAT</span>
+              <img src="logo.png" alt="ALJANNAT" class="brand-logo" />
+              <span class="brand-name" style="color: #fff;">ALJANNAT</span>
             </a>
+            <p style="color: #a0a0a0; font-size: 0.9rem; margin-top: 1rem;">Luxury women's couture dresses for life's most beautiful moments.</p>
+          </div>
+          <div>
+            <h4>Client Services</h4>
+            <ul>
+              <li><a href="cart.html">Shopping Bag</a></li>
+              <li><a href="wishlist.html">Saved Wishlist</a></li>
+              <li><a href="orders.html">Order History</a></li>
+            </ul>
           </div>
         </div>
       </footer>
@@ -72,11 +116,11 @@
       <div class="search-panel">
         <button class="close-search" aria-label="Close search"><i class="fa-solid fa-xmark"></i></button>
         <div class="search-heading">
-          <p class="eyebrow">Search dresses</p>
-          <h2>Find your perfect look</h2>
+          <p class="eyebrow">SEARCH DRESSES</p>
+          <h2>Find Your Perfect Look</h2>
         </div>
         <div class="search-input-wrap">
-          <input type="text" id="global-search" placeholder="Search by style, collection, or name" />
+          <input type="text" id="global-search" placeholder="Search by style, collection, or dress name..." />
           <i class="fa-solid fa-magnifying-glass"></i>
         </div>
         <div class="search-results" id="search-results"></div>
@@ -91,6 +135,7 @@
     <script src="js/wishlist.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/search.js"></script>
+    <script src="js/auth.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>

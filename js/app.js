@@ -1,6 +1,6 @@
-// ============================
-// APP INITIALIZATION
-// ============================
+// ==========================================
+// ALJANNAT CORE APP & UI CONTROLLER
+// ==========================================
 
 const heroSlides = Array.from(document.querySelectorAll('.hero-slide'));
 const heroDots = document.querySelector('.hero-dots');
@@ -19,24 +19,16 @@ const toast = document.getElementById('toast');
 const backToTop = document.querySelector('.back-to-top');
 const loadingScreen = document.querySelector('.loading-screen');
 const header = document.querySelector('.site-header');
-const megaMenu = document.querySelector('.mega-menu');
-const navItems = Array.from(document.querySelectorAll('.nav-item, .main-nav a'));
 const searchOverlay = document.getElementById('search-overlay');
 const themeToggle = document.querySelector('.theme-toggle');
 
 const categoryCards = [
-  { name: 'New Arrivals', image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80' },
-  { name: 'Maxi Dresses', image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=80' },
-  { name: 'Midi Dresses', image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80' },
-  { name: 'Mini Dresses', image: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80' },
-  { name: 'Party Dresses', image: 'https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=800&q=80' },
-  { name: 'Formal Dresses', image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80' },
-  { name: 'Bridal', image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80' },
-  { name: 'Luxury', image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80' },
-  { name: 'Casual', image: 'https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=800&q=80' },
-  { name: 'Summer', image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80' },
-  { name: 'Winter', image: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80' },
-  { name: 'Sale', image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=80' }
+  { name: 'New Arrivals', image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80', link: 'collections.html?filter=new' },
+  { name: 'Maxi Dresses', image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=80', link: 'collections.html?category=maxi' },
+  { name: 'Midi Dresses', image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80', link: 'collections.html?category=midi' },
+  { name: 'Formal Couture', image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80', link: 'collections.html?category=formal' },
+  { name: 'Partywear', image: 'https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=800&q=80', link: 'collections.html?category=party' },
+  { name: 'Bridal Edit', image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80', link: 'collections.html?collection=bridal' }
 ];
 
 function showToast(message) {
@@ -44,14 +36,15 @@ function showToast(message) {
   toast.textContent = message;
   toast.classList.add('show');
   clearTimeout(showToast.timeout);
-  showToast.timeout = setTimeout(() => toast.classList.remove('show'), 1800);
+  showToast.timeout = setTimeout(() => toast.classList.remove('show'), 2200);
 }
 
 function setupHeroSlider() {
   if (!heroSlides.length) return;
   let current = 0;
 
-  const createDots = () => {
+  if (heroDots) {
+    heroDots.innerHTML = '';
     heroSlides.forEach((_, index) => {
       const dot = document.createElement('button');
       dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
@@ -61,7 +54,7 @@ function setupHeroSlider() {
       });
       heroDots.appendChild(dot);
     });
-  };
+  }
 
   const updateHero = () => {
     heroSlides.forEach((slide, index) => slide.classList.toggle('active', index === current));
@@ -69,20 +62,20 @@ function setupHeroSlider() {
     dots.forEach((dot, index) => dot.classList.toggle('active', index === current));
   };
 
-  createDots();
   updateHero();
 
   setInterval(() => {
     current = (current + 1) % heroSlides.length;
     updateHero();
-  }, 6000);
+  }, 6500);
 }
 
 function renderCategoryStrip() {
   if (!categoryStrip) return;
   categoryStrip.innerHTML = '';
   categoryCards.forEach((card) => {
-    const item = document.createElement('article');
+    const item = document.createElement('a');
+    item.href = card.link || 'collections.html';
     item.className = 'category-card reveal';
     item.innerHTML = `
       <img src="${card.image}" alt="${card.name}" loading="lazy" />
@@ -94,7 +87,7 @@ function renderCategoryStrip() {
 
 function renderHomeSections() {
   if (newArrivalsGrid) {
-    renderProducts(newArrivalsGrid, (product) => product.badge === 'New' || product.badge === 'Limited Edition');
+    renderProducts(newArrivalsGrid, (product) => product.badge.includes('New') || product.badge.includes('Limited'));
   }
   if (bestSellersGrid) {
     renderProducts(bestSellersGrid, (product) => product.rating >= 4.8);
@@ -113,18 +106,23 @@ function renderProductPage() {
   if (detailName) detailName.textContent = product.name;
   if (detailPrice) detailPrice.textContent = formatPrice(product.salePrice || product.price);
   if (detailDescription) detailDescription.textContent = product.description;
+  
   if (galleryThumbs) {
     galleryThumbs.innerHTML = '';
-    [product.image, product.hoverImage].forEach((src) => {
+    [product.image, product.hoverImage].forEach((src, idx) => {
       const thumb = document.createElement('img');
       thumb.src = src;
       thumb.alt = product.name;
+      if (idx === 0) thumb.classList.add('active');
       thumb.addEventListener('click', () => {
         if (detailImage) detailImage.src = src;
+        galleryThumbs.querySelectorAll('img').forEach((t) => t.classList.remove('active'));
+        thumb.classList.add('active');
       });
       galleryThumbs.appendChild(thumb);
     });
   }
+
   if (relatedGrid) {
     renderProducts(relatedGrid, (item) => item.id !== product.id && item.collection === product.collection);
   }
@@ -147,18 +145,7 @@ function handleStickyHeader() {
   if (!header) return;
   window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 20);
-    backToTop?.classList.toggle('show', window.scrollY > 600);
-  });
-}
-
-function handleMegaMenu() {
-  navItems.forEach((item) => {
-    item.addEventListener('mouseenter', () => {
-      megaMenu?.classList.add('open');
-    });
-  });
-  document.querySelector('.site-header').addEventListener('mouseleave', () => {
-    megaMenu?.classList.remove('open');
+    backToTop?.classList.toggle('show', window.scrollY > 500);
   });
 }
 
@@ -181,7 +168,7 @@ function handleReveal() {
         entry.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.1 });
   items.forEach((item) => observer.observe(item));
 }
 
@@ -197,7 +184,7 @@ function handleNewsletter() {
       showToast('Please enter a valid email address');
       return;
     }
-    showToast('You are subscribed to ALJANNAT');
+    showToast('Welcome to the ALJANNAT Private List');
     form.reset();
   });
 }
@@ -208,14 +195,27 @@ function handleModal() {
     if (!viewButton) return;
     const id = viewButton.getAttribute('data-id');
     const product = products.find((item) => String(item.id) === id);
-    if (!product) return;
+    if (!product || !modal) return;
+
     modal.innerHTML = `
-      <div class="search-panel">
-        <h3>${product.name}</h3>
-        <p>${product.description}</p>
-        <div class="detail-actions">
-          <a href="product.html?id=${product.id}" class="btn btn-primary">View Details</a>
-          <button class="btn btn-secondary close-modal">Close</button>
+      <div class="payment-modal-backdrop close-modal"></div>
+      <div class="payment-modal-card">
+        <button class="payment-modal-close close-modal"><i class="fa-solid fa-xmark"></i></button>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+          <img src="${product.image}" alt="${product.name}" style="border-radius: var(--radius); aspect-ratio: 3/4; object-fit: cover;" />
+          <div>
+            <span class="eyebrow">${product.badge}</span>
+            <h2>${product.name}</h2>
+            <div class="price-row" style="margin: 1rem 0;">
+              <span class="current-price" style="font-size: 1.5rem; color: var(--accent);">${formatPrice(product.salePrice || product.price)}</span>
+              ${product.salePrice ? `<span class="old-price">${formatPrice(product.price)}</span>` : ''}
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">${product.description}</p>
+            <div class="detail-actions">
+              <a href="product.html?id=${product.id}" class="btn btn-primary">View Full Details</a>
+              <button class="btn btn-secondary add-to-cart-inline" data-id="${product.id}">Add to Bag</button>
+            </div>
+          </div>
         </div>
       </div>
     `;
@@ -223,7 +223,7 @@ function handleModal() {
   });
 
   modal?.addEventListener('click', (event) => {
-    if (event.target.classList.contains('close-modal')) {
+    if (event.target.classList.contains('close-modal') || event.target.closest('.close-modal')) {
       modal.innerHTML = '';
       modal.classList.remove('open');
     }
@@ -241,9 +241,7 @@ function init() {
   updateCartCount();
   handleTheme();
   handleStickyHeader();
-  handleMegaMenu();
   handleHamburger();
-  handleReveal();
   setupHeroSlider();
   renderCategoryStrip();
   renderHomeSections();
@@ -253,94 +251,19 @@ function init() {
   setupBackToTop();
   renderWishlist();
   renderCart();
+  handleReveal();
   if (typeof initializePaymentFlow === 'function') {
     initializePaymentFlow();
   }
-  
-  // Initialize collection filters if on collections page
-  const collectionContainer = document.getElementById('collection-products');
-  if (collectionContainer) {
-    try {
-      // Apply URL filters
-      const params = new URLSearchParams(window.location.search);
-      const categoryParam = params.get('category');
-      const collectionParam = params.get('collection');
-      const filterParam = params.get('filter');
-      
-      // Check category checkbox
-      if (categoryParam) {
-        const checkbox = document.querySelector(`.filter-block input[value="${categoryParam}"]`);
-        if (checkbox) {
-          checkbox.checked = true;
-        }
-      }
-      
-      // Check collection checkbox
-      if (collectionParam) {
-        const checkbox = document.querySelector(`.filter-block input[value="${collectionParam}"]`);
-        if (checkbox) {
-          checkbox.checked = true;
-        }
-      }
-      
-      // Set up filter change listeners
-      const filterInputs = document.querySelectorAll('.filter-block input');
-      const sortSelect = document.getElementById('sort-select');
-      const toggleView = document.getElementById('toggle-view');
-      
-      filterInputs.forEach((input) => {
-        input.addEventListener('change', () => {
-          if (typeof getFilteredProducts === 'function') {
-            getFilteredProducts();
-          }
-        });
-      });
-      
-      if (sortSelect) {
-        sortSelect.addEventListener('change', () => {
-          if (typeof getFilteredProducts === 'function') {
-            getFilteredProducts();
-          }
-        });
-      }
-      
-      if (toggleView) {
-        toggleView.addEventListener('click', () => {
-          collectionContainer.classList.toggle('list-view');
-        });
-      }
-      
-      // Render filtered products
-      if (typeof getFilteredProducts === 'function') {
-        getFilteredProducts();
-      }
-    } catch (e) {
-      console.error('Error initializing collection filters:', e);
-    }
-  }
 
-  loadingScreen?.classList.add('hidden');
+  // Remove loading screen smoothly
+  setTimeout(() => {
+    loadingScreen?.classList.add('hidden');
+  }, 300);
 }
 
-// Try to call init immediately if DOM is ready (scripts are at end of body)
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', init);
 } else {
-  // DOM is already loaded, call init now
   init();
 }
-
-// Ensure loading screen is always hidden after a timeout
-const hideLoadingScreen = () => {
-  const loadingScreen = document.querySelector('.loading-screen');
-  if (loadingScreen) {
-    loadingScreen.classList.add('hidden');
-  }
-};
-
-// Hide loading screen on multiple events to ensure it works
-window.addEventListener('load', hideLoadingScreen);
-document.addEventListener('DOMContentLoaded', hideLoadingScreen);
-
-// Also hide it after a delay as a fallback
-setTimeout(hideLoadingScreen, 500);

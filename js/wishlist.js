@@ -1,11 +1,13 @@
-// ============================
-// WISHLIST FUNCTIONALITY
-// ============================
+// ==========================================
+// PURE FRONTEND WISHLIST LOGIC
+// ==========================================
 
 function renderWishlist() {
   const wishlistGrid = document.getElementById('wishlist-grid');
   if (!wishlistGrid) return;
-  const wishlistIds = getStoredArray(STORAGE_KEYS.wishlist);
+
+  const wishlistItems = getWishlistItemsFromStorage();
+  const wishlistIds = wishlistItems.map((item) => String(item));
   const wishlistProducts = products.filter((product) => wishlistIds.includes(String(product.id)));
 
   wishlistGrid.innerHTML = '';
@@ -20,16 +22,19 @@ function renderWishlist() {
 }
 
 function toggleWishlist(id) {
-  const next = toggleStoredItem(STORAGE_KEYS.wishlist, String(id));
+  const next = toggleWishlistItem(id);
   updateWishlistCount();
   renderWishlist();
-  showToast(next.includes(String(id)) ? 'Added to wishlist' : 'Removed from wishlist');
+  if (typeof showToast === 'function') {
+    showToast(next.includes(String(id)) ? 'Added to wishlist' : 'Removed from wishlist');
+  }
 }
 
 function updateWishlistCount() {
   const counts = document.querySelectorAll('.wishlist-count');
+  const wishlistItems = getWishlistItemsFromStorage();
   counts.forEach((element) => {
-    element.textContent = getStoredArray(STORAGE_KEYS.wishlist).length;
+    element.textContent = wishlistItems.length;
   });
 }
 

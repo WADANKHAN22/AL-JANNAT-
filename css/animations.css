@@ -1,31 +1,74 @@
-/* ===========================
-   ANIMATIONS
-=========================== */
+/* ==========================================
+   LUXURY MICRO-ANIMATIONS & REVEALS
+========================================== */
 
-@keyframes floatIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes pulseSoft {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.03);
-  }
+/* Scroll Reveal Classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
 .reveal.visible {
-  animation: floatIn 0.8s ease forwards;
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.product-card:hover .product-media img {
-  animation: pulseSoft 1.1s ease infinite;
+/* Stagger delays for grid items */
+.reveal:nth-child(1) { transition-delay: 0.05s; }
+.reveal:nth-child(2) { transition-delay: 0.1s; }
+.reveal:nth-child(3) { transition-delay: 0.15s; }
+.reveal:nth-child(4) { transition-delay: 0.2s; }
+.reveal:nth-child(5) { transition-delay: 0.25s; }
+.reveal:nth-child(6) { transition-delay: 0.3s; }
+
+/* Shimmer Effect on Gold Buttons */
+@keyframes goldShimmer {
+  0% { transform: translateX(-100%) rotate(25deg); }
+  100% { transform: translateX(200%) rotate(25deg); }
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: rotate(25deg);
+  transition: var(--transition);
+}
+
+.btn-primary:hover::after {
+  animation: goldShimmer 1.2s ease-in-out;
+}
+
+/* Subtle Hero Slide Fade */
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-slide.active {
+  animation: heroFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Skeleton Loading Pulse */
+@keyframes skeletonPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.3; }
+}
+
+.skeleton {
+  background: var(--border);
+  animation: skeletonPulse 1.5s ease-in-out infinite;
+  border-radius: var(--radius-sm);
 }

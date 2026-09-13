@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard | ALJANNAT Management</title>
+    <meta name="description" content="ALJANNAT executive admin dashboard for catalog, orders, and wholesale management." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="icon" href="logo.png" type="image/png" />
+  </head>
+  <body data-page="admin">
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="container nav-wrap">
+          <a href="index.html" class="brand" aria-label="ALJANNAT home">
+            <img src="logo.png" alt="ALJANNAT" class="brand-logo" />
+            <span class="brand-name">ALJANNAT <span style="font-size: 0.65rem; background: var(--accent); color: #000; padding: 0.2rem 0.6rem; border-radius: 4px; vertical-align: middle;">ADMIN</span></span>
+          </a>
+
+          <div class="nav-actions">
+            <a href="index.html" class="btn btn-secondary" style="font-size: 0.75rem;"><i class="fa-solid fa-store"></i> View Storefront</a>
+            <div class="auth-widget" data-auth-widget="true"></div>
+          </div>
+        </div>
+      </header>
+
+      <div class="admin-layout">
+        <aside class="admin-sidebar">
+          <div style="margin-bottom: 1rem;">
+            <p class="eyebrow" style="color: var(--accent);">NAVIGATION</p>
+          </div>
+          <nav class="admin-nav">
+            <a href="#overview" class="active"><i class="fa-solid fa-chart-line"></i> Dashboard Overview</a>
+            <a href="#products"><i class="fa-solid fa-boxes-stacked"></i> Catalog Management</a>
+            <a href="#orders"><i class="fa-solid fa-cart-flatbed"></i> Client Orders</a>
+            <a href="#wholesale"><i class="fa-solid fa-handshake"></i> Wholesale B2B Leads</a>
+            <a href="#settings"><i class="fa-solid fa-sliders"></i> Store Settings</a>
+          </nav>
+        </aside>
+
+        <main class="admin-content">
+          <div class="reveal">
+            <span class="eyebrow">STORE PERFORMANCE</span>
+            <h1>Executive Management Dashboard</h1>
+            <p style="color: var(--text-muted); margin-bottom: 2.5rem;">Live metrics, inventory status, and order processing overview.</p>
+          </div>
+
+          <!-- KPI Metric Summary Cards -->
+          <div class="kpi-grid reveal">
+            <div class="kpi-card">
+              <h4>Total Revenue (MTD)</h4>
+              <div class="kpi-val">$48,920</div>
+              <p style="font-size: 0.78rem; color: #27ae60; margin-top: 0.35rem;"><i class="fa-solid fa-arrow-trend-up"></i> +18.4% vs last month</p>
+            </div>
+
+            <div class="kpi-card">
+              <h4>Total Active Orders</h4>
+              <div class="kpi-val">142</div>
+              <p style="font-size: 0.78rem; color: var(--accent); margin-top: 0.35rem;">12 Pending Dispatch</p>
+            </div>
+
+            <div class="kpi-card">
+              <h4>B2B Wholesale Leads</h4>
+              <div class="kpi-val">18</div>
+              <p style="font-size: 0.78rem; color: #2980b9; margin-top: 0.35rem;">5 New Inquiries Today</p>
+            </div>
+
+            <div class="kpi-card">
+              <h4>Active Catalog Items</h4>
+              <div class="kpi-val">24</div>
+              <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.35rem;">6 Limited Releases</p>
+            </div>
+          </div>
+
+          <!-- Product Management Section -->
+          <div id="products" style="margin-bottom: 3.5rem;" class="reveal">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+              <div>
+                <h2>Product Catalog</h2>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Manage live boutique collection inventory and pricing.</p>
+              </div>
+              <button class="btn btn-primary" onclick="showToast('New Product Form Opened');"><i class="fa-solid fa-plus"></i> Add New Dress</button>
+            </div>
+
+            <table class="orders-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Category</th>
+                  <th>Collection</th>
+                  <th>Retail Price</th>
+                  <th>Stock Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="admin-product-rows">
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                      <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=150&q=80" alt="Aurora Silk" style="width: 40px; height: 50px; border-radius: 4px; object-fit: cover;" />
+                      <div>
+                        <strong>Aurora Silk Evening Gown</strong>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">ID: #PROD-1</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Partywear</td>
+                  <td>Luxury Couture</td>
+                  <td>$540 ($620)</td>
+                  <td><span class="status-badge delivered">In Stock</span></td>
+                  <td>
+                    <button class="btn btn-secondary" style="padding: 0.3rem 0.65rem; font-size: 0.75rem;" onclick="showToast('Edit modal launched');"><i class="fa-solid fa-pen-to-square"></i></button>
+                    <button class="btn btn-secondary" style="padding: 0.3rem 0.65rem; font-size: 0.75rem; color: #e63946;" onclick="showToast('Product hidden from store');"><i class="fa-solid fa-trash"></i></button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                      <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=150&q=80" alt="Velvet Moon" style="width: 40px; height: 50px; border-radius: 4px; object-fit: cover;" />
+                      <div>
+                        <strong>Velvet Moon Midi Dress</strong>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">ID: #PROD-2</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Midi Dresses</td>
+                  <td>Bridal Edit</td>
+                  <td>$430 ($480)</td>
+                  <td><span class="status-badge pending">Low Stock</span></td>
+                  <td>
+                    <button class="btn btn-secondary" style="padding: 0.3rem 0.65rem; font-size: 0.75rem;" onclick="showToast('Edit modal launched');"><i class="fa-solid fa-pen-to-square"></i></button>
+                    <button class="btn btn-secondary" style="padding: 0.3rem 0.65rem; font-size: 0.75rem; color: #e63946;" onclick="showToast('Product hidden from store');"><i class="fa-solid fa-trash"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Order Management Section -->
+          <div id="orders" class="reveal">
+            <div style="margin-bottom: 1.5rem;">
+              <h2>Recent Client Orders</h2>
+              <p style="color: var(--text-muted); font-size: 0.9rem;">View and update order status for recent store purchases.</p>
+            </div>
+
+            <table class="orders-table">
+              <thead>
+                <tr>
+                  <th>Order Reference</th>
+                  <th>Client Name</th>
+                  <th>Date</th>
+                  <th>Total Amount</th>
+                  <th>Payment Status</th>
+                  <th>Delivery Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>#ORD-98214</td>
+                  <td>Princess Amira Al-Saud</td>
+                  <td>Sep 11, 2026</td>
+                  <td>$1,230</td>
+                  <td><span class="status-badge delivered">Paid</span></td>
+                  <td><span class="status-badge shipped">In Transit</span></td>
+                </tr>
+                <tr>
+                  <td>#ORD-98213</td>
+                  <td>Fatima Khan</td>
+                  <td>Sep 10, 2026</td>
+                  <td>$540</td>
+                  <td><span class="status-badge delivered">Paid</span></td>
+                  <td><span class="status-badge pending">Processing</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
